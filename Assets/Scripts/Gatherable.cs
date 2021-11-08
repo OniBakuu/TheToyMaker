@@ -8,7 +8,9 @@ public class Gatherable : MonoBehaviour
     public int hits = 0;
     public int hitsRequired;
 
-    public GameObject[] gatherItems;
+    public bool closeEnough = false;
+
+    public GameObject gatherItem;
     private GameObject player;
 
     public String itemType;
@@ -19,28 +21,47 @@ public class Gatherable : MonoBehaviour
         player = GameObject.Find("Player");
     }
 
-    //Tracks clicks on object
-    public void OnMouseDown()
+    public void OnTriggerEnter2D(Collider2D other)
     {
-        if (hits < hitsRequired-1)
+        if (other.CompareTag("Player"))
         {
-            hits++;
-        }
-        else
-        {
-            Gathered();
+            closeEnough = true;
         }
     }
 
-    //Checks what item is gathered then adds it to inv
-    public void Gathered()
+    public void OnTriggerExit2D(Collider2D other)
     {
-        //Replace with switch statement
-        if (itemType.Equals("Tree"))
+        if (other.CompareTag("Player"))
         {
-            player.GetComponent<Inventory>().AddItems(gatherItems[0]);
+            closeEnough = false;
+        }
+    }
+
+    //Tracks clicks on object
+    public void OnMouseDown()
+    {
+        // Only gatherable if close enough
+        if (closeEnough)
+        {
+            if (hits < hitsRequired-1)
+            {
+                hits++;
+            }
+            else
+            {
+                Gathered();
+            }
         }
         
+    }
+
+    //Checks what item is gathered then adds it to inv
+    private void Gathered()
+    {
+        
+        player.GetComponent<Inventory>().AddItems(gatherItem);
+        
+        //check if the item is an animal or something that shouldn't be destroyed
         Destroy(gameObject);
     }
 }

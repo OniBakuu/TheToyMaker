@@ -14,12 +14,16 @@ public class SpawnSheep : MonoBehaviour
     public float xMax;
     public float yMin;
     public float yMax;
+
+    public GameObject spawnPoint;
+    
     private Vector3 spawnCoord;
 
     // Start is called before the first frame update
     void Start()
     {
-        // GenerateSheep();
+        spawnCoord = spawnPoint.transform.position;
+        GenerateSheep();
     }
 
     public void GenerateSheep()
@@ -30,8 +34,21 @@ public class SpawnSheep : MonoBehaviour
             if (rand <= 3)
             {
                 // Change spawn for sheep to be random within a certain area
-                Instantiate(sheep, Vector3.zero, quaternion.identity);
+                Instantiate(sheep, GetRandomPos(), sheep.transform.rotation);
             }
         }
     }
+
+    public Vector3 GetRandomPos()
+    {
+        Vector3 spawn = Vector3.zero;
+        float xOffset = Random.Range(xMin, xMax);
+        float yOffset = Random.Range(yMin, yMax);
+
+        spawn = new Vector3(spawnCoord.x + xOffset, spawnCoord.y+yOffset, spawnCoord.z);
+        
+
+        return spawn;
+    }
+    
 }

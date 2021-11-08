@@ -10,8 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7671170168916205236}
   - component: {fileID: 6250595890562037929}
+  - component: {fileID: -3638908557359842410}
   - component: {fileID: 1697554360400777201}
   - component: {fileID: -8328062362841549728}
+  - component: {fileID: 6053981173975935244}
   m_Layer: 0
   m_Name: Sheep
   m_TagString: Untagged
@@ -28,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 327203806802185651}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 8.86, y: 2.99, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children:
   - {fileID: 2284597871071593671}
   m_Father: {fileID: 0}
@@ -85,6 +87,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-3638908557359842410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327203806802185651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff71e12a2549cd34489c294048d909e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hits: 0
+  hitsRequired: 2
+  closeEnough: 0
+  gatherItem: {fileID: 1131568395285837147, guid: b8c7cc8230e9c1b4eab18f7da863069f, type: 3}
+  itemType: Sheep
 --- !u!61 &1697554360400777201
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -132,6 +151,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &6053981173975935244
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327203806802185651}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 3
 --- !u!1 &3064344540488327557
 GameObject:
   m_ObjectHideFlags: 0
