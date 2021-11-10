@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    
+    
     private int inventorySlots = 20;
     public List<GameObject> invItems;
     
@@ -12,12 +14,6 @@ public class Inventory : MonoBehaviour
     void Start()
     {
         invItems.Capacity = inventorySlots;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     //Adds items to inventory
