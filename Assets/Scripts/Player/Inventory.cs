@@ -7,7 +7,7 @@ public class Inventory : MonoBehaviour
     
     
     private int inventorySlots = 20;
-    public List<GameObject> invItems;
+    public List<Item> invItems;
     
     
     // Start is called before the first frame update
@@ -17,7 +17,7 @@ public class Inventory : MonoBehaviour
     }
 
     //Adds items to inventory
-    public void AddItems(GameObject obj)
+    public void AddItems(Item obj)
     {
         if (invItems.Count < inventorySlots)
         {
@@ -26,7 +26,7 @@ public class Inventory : MonoBehaviour
         
     }
 
-    public void RemoveItems(GameObject obj)
+    public void RemoveItems(Item obj)
     {
         if (invItems.Contains(obj))
         {

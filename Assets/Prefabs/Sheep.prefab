@@ -102,7 +102,7 @@ MonoBehaviour:
   hits: 0
   hitsRequired: 2
   closeEnough: 0
-  gatherItem: {fileID: 1131568395285837147, guid: b8c7cc8230e9c1b4eab18f7da863069f, type: 3}
+  gatherItem: {fileID: 7047646702872044694, guid: b8c7cc8230e9c1b4eab18f7da863069f, type: 3}
   itemType: Sheep
 --- !u!61 &1697554360400777201
 BoxCollider2D:

@@ -10,7 +10,7 @@ public class Gatherable : MonoBehaviour
 
     public bool closeEnough = false;
 
-    public GameObject gatherItem;
+    public Item gatherItem;
     private GameObject player;
 
     public String itemType;

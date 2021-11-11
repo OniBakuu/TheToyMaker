@@ -18,20 +18,7 @@ public class PlayerControl : MonoBehaviour
     //m_velocity is the current velocity to pass into smoothdamp starts at 0 and should be updated
     private Vector2 m_velocity = Vector2.zero;
 
-    private static PlayerControl Instance;
-    void Awake()
-    {
-        if (Instance == null)
-        {
-            DontDestroyOnLoad(gameObject);
-            Instance = this;
-        }
-        else if (Instance != this)
-        {
-            Destroy (gameObject);
-        }
-    }
-    
+
     // Start is called before the first frame update
     void Start()
     {
