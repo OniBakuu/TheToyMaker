@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Newtonsoft.Json.Serialization;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -8,6 +10,13 @@ public class Inventory : MonoBehaviour
     
     private int inventorySlots = 20;
     public List<Item> invItems;
+
+    [NonSerialized]
+    public bool mittens = false;
+    [NonSerialized]
+    public bool hat = false;
+    [NonSerialized]
+    public bool coat = false;
     
     
     // Start is called before the first frame update

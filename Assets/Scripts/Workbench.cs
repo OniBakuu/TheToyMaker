@@ -13,9 +13,10 @@ public class Workbench : MonoBehaviour
     public GameObject workUI;
     public GameObject matsPanel;
     public GameObject toysPanel;
+    public GameObject equipPanel;
 
     public Item[] workableItems;
-    public Item[] finishedItems;
+    public Item[] toys;
 
 
     public void Start()
@@ -37,32 +38,68 @@ public class Workbench : MonoBehaviour
         switch (itemType)
         {
             case "Figure":
-                for (int i = 0; i < finishedItems[0].woodCost; i++) 
+                for (int i = 0; i < toys[0].woodCost; i++) 
                 {
                    player.GetComponent<Inventory>().RemoveItems(workableItems[0]);
                 }
                 
-                toyBin.GetComponent<StorageManager>().AddItems(finishedItems[0]);
+                toyBin.GetComponent<StorageManager>().AddItems(toys[0]);
+                break;
+            case "String":
+                for (int i = 0; i < workableItems[2].woolCost; i++)
+                {
+                    player.GetComponent<Inventory>().RemoveItems(workableItems[1]);
+                }
+                player.GetComponent<Inventory>().AddItems(workableItems[2]);
+                break;
+            
+            case "Mittens":
+                // Mitten crafting
+                break;
+            
+            case "Hat":
+                // Hat crafting
+                break;
+            
+            case "Coat":
+                // Coat crafting
                 break;
         }
     }
     
     public void ShowWork()
     {
-        workUI.SetActive(true);
-        toysPanel.SetActive(true);
+        if (atWork)
+        {
+            workUI.SetActive(true);
+            toysPanel.SetActive(true);
+        }
+    }
+
+    public void CloseWork()
+    {
+        workUI.SetActive(false);
     }
 
     public void ShowMatsPanel()
     {
+        equipPanel.SetActive(false);
         matsPanel.SetActive(true);
         toysPanel.SetActive(false);
     }
     
     public void ShowToysPanel()
     {
+        equipPanel.SetActive(false);
         matsPanel.SetActive(false);
         toysPanel.SetActive(true);
+    }
+
+    public void ShowEquipmentPanel()
+    {
+        matsPanel.SetActive(false);
+        toysPanel.SetActive(false);
+        equipPanel.SetActive(true);
     }
     
     public void OnTriggerEnter2D(Collider2D other)

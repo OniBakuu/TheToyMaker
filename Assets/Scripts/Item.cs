@@ -7,5 +7,6 @@ public class Item : MonoBehaviour
    public int woodCost;
    public int woolCost;
    public string itemName;
-   
+   public int score;
+
 }

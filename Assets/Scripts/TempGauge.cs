@@ -6,15 +6,21 @@ using UnityEngine.UI;
 public class TempGauge : MonoBehaviour
 {
 
-    public float gauge = 180;
+    private float baseGauge = 90;
+    private float gauge;
     public Text tempGauge;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
+    public GameObject player;
+
+
+    public void Start()
+    {
+        player = GameObject.Find("Player");
+        
+        PlayerClothesCheck();
+        gauge = baseGauge;
+    }
+    
     // Update is called once per frame
     void Update()
     {
@@ -30,4 +36,29 @@ public class TempGauge : MonoBehaviour
             Debug.Log("ded");
         }
     }
+
+    private void PlayerClothesCheck()
+    {
+        if (player.GetComponent<Inventory>().mittens)
+        {
+            baseGauge += 25;
+        }
+
+        if (player.GetComponent<Inventory>().hat)
+        {
+            baseGauge += 25;
+        }
+
+        if (player.GetComponent<Inventory>().coat)
+        {
+            baseGauge += 40;
+        }
+    }
+
+    
+    public void ModifyTemp(float val)
+    {
+        gauge += val;
+    }
+    
 }
