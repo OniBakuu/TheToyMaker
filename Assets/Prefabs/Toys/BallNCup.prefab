@@ -99,5 +99,5 @@ MonoBehaviour:
   woolCost: 0
   stringCost: 2
   itemName: BallNCup
-  score: 50
+  score: 100
   itemSprite: {fileID: 0}

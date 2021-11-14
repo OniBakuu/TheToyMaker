@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 public class Workbench : MonoBehaviour
 {
-    private bool atWork = false;
+    public bool atWork = false;
     public GameObject player;
     public GameObject toyBin;
     
@@ -54,7 +54,7 @@ public class Workbench : MonoBehaviour
                 
                 for (int i = 0; i < toys[1].stringCost; i++) 
                 {
-                    player.GetComponent<Inventory>().RemoveItems(workableItems[3]);
+                    player.GetComponent<Inventory>().RemoveItems(workableItems[2]);
                 }
                 
                 toyBin.GetComponent<StorageManager>().AddItems(toys[1]);
