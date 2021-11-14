@@ -7,6 +7,8 @@ public class Item : MonoBehaviour
 {
    public int woodCost;
    public int woolCost;
+   public int stringCost;
+   
    public string itemName;
    public int score;
    public RawImage itemSprite;

@@ -45,6 +45,21 @@ public class Workbench : MonoBehaviour
                 
                 toyBin.GetComponent<StorageManager>().AddItems(toys[0]);
                 break;
+            
+            case "BallNCup":
+                for (int i = 0; i < toys[1].woodCost; i++) 
+                {
+                    player.GetComponent<Inventory>().RemoveItems(workableItems[0]);
+                }
+                
+                for (int i = 0; i < toys[1].stringCost; i++) 
+                {
+                    player.GetComponent<Inventory>().RemoveItems(workableItems[3]);
+                }
+                
+                toyBin.GetComponent<StorageManager>().AddItems(toys[1]);
+                break;
+            
             case "String":
                 for (int i = 0; i < workableItems[2].woolCost; i++)
                 {
@@ -54,16 +69,29 @@ public class Workbench : MonoBehaviour
                 break;
             
             case "Mittens":
-                // Mitten crafting
+                for (int i = 0; i < 4; i++)
+                {
+                    player.GetComponent<Inventory>().RemoveItems(workableItems[1]);
+                }
+
+                player.GetComponent<Inventory>().mittens = true;
                 break;
             
             case "Hat":
-                // Hat crafting
-                break;
+                for (int i = 0; i < 6; i++)
+                {
+                    player.GetComponent<Inventory>().RemoveItems(workableItems[1]);
+                }
+
+                player.GetComponent<Inventory>().hat = true;                break;
             
             case "Coat":
-                // Coat crafting
-                break;
+                for (int i = 0; i < 10; i++)
+                {
+                    player.GetComponent<Inventory>().RemoveItems(workableItems[1]);
+                }
+
+                player.GetComponent<Inventory>().coat = true;                break;
         }
     }
     

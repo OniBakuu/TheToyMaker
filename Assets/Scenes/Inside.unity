@@ -1233,6 +1233,62 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 171300e4ebbb4a6459925e165352c18f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &326351082
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 326351085}
+  - component: {fileID: 326351084}
+  - component: {fileID: 326351083}
+  m_Layer: 0
+  m_Name: WocheManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &326351083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326351082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9d6e3d505c6a6242827b2ef8096fbdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &326351084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326351082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b81ec80af57ef4149bc0e824b01b9afd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &326351085
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326351082}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.2745378, y: -0.06817569, z: 906.5537}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &344368898 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1131875723752504634, guid: f39924d7e215808409f8455e2fe55b83, type: 3}
@@ -3047,7 +3103,9 @@ MonoBehaviour:
   - {fileID: 407690485880092776, guid: 9437274dc4c375e45a42a109ee522a0b, type: 3}
   - {fileID: 7047646702872044694, guid: b8c7cc8230e9c1b4eab18f7da863069f, type: 3}
   - {fileID: 4230090572164078140, guid: 877eb60dbdf550d4d86d119d532665cd, type: 3}
-  toys: []
+  toys:
+  - {fileID: 1847348408722385096, guid: 2c9de0a6857e6e94da9c370bfbc8ace0, type: 3}
+  - {fileID: 15984061123740277, guid: 93ed54154e31ea0429865d3bf064a6e3, type: 3}
 --- !u!1 &1354958408
 GameObject:
   m_ObjectHideFlags: 0

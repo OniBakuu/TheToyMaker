@@ -69,10 +69,11 @@ public class Inventory : MonoBehaviour
         if (showingInv)
         {
             invUI.SetActive(false);
+            showingInv = false;
         }
         else
         {
-            DisplayInvSlots();
+            SetInvSlots();
             invUI.SetActive(true);
             showingInv = true;
         }
@@ -80,7 +81,7 @@ public class Inventory : MonoBehaviour
     }
 
     // Goes through invSlots and either turns off that slot or gives it the right info
-    private void DisplayInvSlots()
+    private void SetInvSlots()
     {
         for (int i = 0; i < inventorySlots; i++)
         {
@@ -88,6 +89,7 @@ public class Inventory : MonoBehaviour
             {
                 invUISlots[i].invText.text = invItems[i].itemName;
                 invUISlots[i].invImage = invItems[i].itemSprite;
+                invUISlots[i].invPanel.SetActive(true);
             }
             else
             {
