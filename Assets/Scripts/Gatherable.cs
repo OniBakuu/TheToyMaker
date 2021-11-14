@@ -62,6 +62,6 @@ public class Gatherable : MonoBehaviour
         player.GetComponent<Inventory>().AddItems(gatherItem);
         
         //check if the item is an animal or something that shouldn't be destroyed
-        Destroy(gameObject);
+       // Destroy(gameObject);
     }
 }

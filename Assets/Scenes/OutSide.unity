@@ -11036,6 +11036,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8416740352422137550, guid: 68470efee00bad54298c0ad259ed25a9, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68470efee00bad54298c0ad259ed25a9, type: 3}
 --- !u!1 &1984305474
@@ -11130,8 +11134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bbd25665585dfa49bbc3f94ce9fde4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gauge: 180
   tempGauge: {fileID: 1984305476}
+  player: {fileID: 0}
 --- !u!1001 &2048109446
 PrefabInstance:
   m_ObjectHideFlags: 0

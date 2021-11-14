@@ -11,6 +11,10 @@ public class Inventory : MonoBehaviour
     private int inventorySlots = 20;
     public List<Item> invItems;
 
+    public List<InvSlot> invUISlots;
+    public GameObject invUI;
+    private bool showingInv = false;
+
     [NonSerialized]
     public bool mittens = false;
     [NonSerialized]
@@ -18,19 +22,36 @@ public class Inventory : MonoBehaviour
     [NonSerialized]
     public bool coat = false;
     
-    
+
     // Start is called before the first frame update
     void Start()
     {
         invItems.Capacity = inventorySlots;
+        invUISlots.Capacity = inventorySlots;
+        for (int i = 0; i < inventorySlots; i++)
+        {
+            invItems.Add(null);
+        }
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            ToggleInv();
+        }
     }
 
     //Adds items to inventory
     public void AddItems(Item obj)
     {
-        if (invItems.Count < inventorySlots)
+        for (int i = 0; i < inventorySlots; i++)
         {
-            invItems.Add(obj);
+            if (invItems[i] == null)
+            {
+                invItems[i] = obj;
+                break;
+            }
         }
         
     }
@@ -40,6 +61,38 @@ public class Inventory : MonoBehaviour
         if (invItems.Contains(obj))
         {
             invItems.Remove(obj);
+        }
+    }
+
+    private void ToggleInv()
+    {
+        if (showingInv)
+        {
+            invUI.SetActive(false);
+        }
+        else
+        {
+            DisplayInvSlots();
+            invUI.SetActive(true);
+            showingInv = true;
+        }
+        
+    }
+
+    // Goes through invSlots and either turns off that slot or gives it the right info
+    private void DisplayInvSlots()
+    {
+        for (int i = 0; i < inventorySlots; i++)
+        {
+            if (invItems[i])
+            {
+                invUISlots[i].invText.text = invItems[i].itemName;
+                invUISlots[i].invImage = invItems[i].itemSprite;
+            }
+            else
+            {
+                invUISlots[i].invPanel.SetActive(false);
+            }
         }
     }
 }
