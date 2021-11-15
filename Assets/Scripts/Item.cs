@@ -8,6 +8,7 @@ public class Item : MonoBehaviour
    public int woodCost;
    public int woolCost;
    public int stringCost;
+   public int dyeCost;
    
    public string itemName;
    public int score;

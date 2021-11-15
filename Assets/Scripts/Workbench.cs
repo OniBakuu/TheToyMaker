@@ -60,6 +60,25 @@ public class Workbench : MonoBehaviour
                 toyBin.GetComponent<StorageManager>().AddItems(toys[1]);
                 break;
             
+            case "Horse":
+                for (int i = 0; i < toys[2].woodCost; i++)
+                {
+                    player.GetComponent<Inventory>().RemoveItems(workableItems[0]);
+                }
+
+                for (int i = 0; i < toys[2].stringCost; i++)
+                {
+                    player.GetComponent<Inventory>().RemoveItems(workableItems[2]);
+                }
+
+                for (int i = 0; i < toys[2].dyeCost; i++)
+                {
+                    player.GetComponent<Inventory>().RemoveItems(workableItems[3]);
+                }
+
+                toyBin.GetComponent<StorageManager>().AddItems(toys[2]);
+                break;
+            
             case "String":
                 for (int i = 0; i < workableItems[2].woolCost; i++)
                 {

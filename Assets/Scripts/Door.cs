@@ -10,7 +10,7 @@ public class Door : MonoBehaviour
 {
     private Scene curScene;
 
-    private bool atDoor = false;
+    public bool atDoor = false;
 
     private GameObject player;
     
@@ -26,10 +26,16 @@ public class Door : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (atDoor)
+            if (atDoor && !player.GetComponent<Player>().beenOutside)
             {
                 ChangeScene();
             }
+
+            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("OutSide"))
+            {
+                ChangeScene();
+            }
+            
         }
     }
 

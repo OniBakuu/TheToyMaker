@@ -12,6 +12,7 @@ public class WocheManager : MonoBehaviour
 
     public List<Item> toybin;
     public GameObject bed;
+    public Player player;
 
 
 
@@ -22,6 +23,7 @@ public class WocheManager : MonoBehaviour
     public void EndDay()
     {
         days += 1;
+        player.beenOutside = false;
     }
     
     void Update()
