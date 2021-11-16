@@ -156,5 +156,12 @@ public class Workbench : MonoBehaviour
             atWork = true;
         }
     }
-    
+
+    public void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            atWork = false;
+        }
+    }
 }

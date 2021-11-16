@@ -60,7 +60,8 @@ public class Inventory : MonoBehaviour
     {
         if (invItems.Contains(obj))
         {
-            invItems.Remove(obj);
+            int index = invItems.IndexOf(obj);
+            invItems[index] = null;
         }
     }
 

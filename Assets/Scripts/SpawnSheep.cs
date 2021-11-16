@@ -30,10 +30,9 @@ public class SpawnSheep : MonoBehaviour
     {
         for (int i = 0; i < maxSheepNum; i++)
         {
-            int rand = Random.Range(0, 10);
-            if (rand <= 3)
+            int rand = Random.Range(0, 100);
+            if (rand <= 30)
             {
-                // Change spawn for sheep to be random within a certain area
                 Instantiate(sheep, GetRandomPos(), sheep.transform.rotation);
             }
         }
