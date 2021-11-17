@@ -9,9 +9,13 @@ public class Gatherable : MonoBehaviour
     public int hitsRequired;
 
     public bool closeEnough = false;
+    public bool gathered = false;
 
     public Item gatherItem;
     private GameObject player;
+    public SpriteRenderer sheepSelf;
+    public Sprite shearedSheep;
+    public Sprite shearedDSheep;
 
     public String itemType;
 
@@ -40,17 +44,22 @@ public class Gatherable : MonoBehaviour
     //Tracks clicks on object
     public void OnMouseDown()
     {
+        
         // Only gatherable if close enough
         if (closeEnough)
         {
-            if (hits < hitsRequired-1)
+            if (!gathered)
             {
-                hits++;
+                if (hits < hitsRequired-1)
+                {
+                    hits++;
+                }
+                else
+                {
+                    Gathered();
+                }
             }
-            else
-            {
-                Gathered();
-            }
+            
         }
         
     }
@@ -60,8 +69,23 @@ public class Gatherable : MonoBehaviour
     {
         
         player.GetComponent<Inventory>().AddItems(gatherItem);
-        
-        //check if the item is an animal or something that shouldn't be destroyed
-        Destroy(gameObject);
+
+        if (itemType.Equals("Sheep"))
+        {
+            sheepSelf.sprite = shearedSheep;
+        }
+
+        if (itemType.Equals("DumboSheep"))
+        {
+            sheepSelf.sprite = shearedDSheep;
+        }
+
+        if (!itemType.Equals("Sheep") && !itemType.Equals("DumboSheep"))
+        {
+            Destroy(gameObject);
+        }
+
+        gathered = true;
+
     }
 }

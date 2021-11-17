@@ -183,8 +183,6 @@ public class Workbench : MonoBehaviour
            
         }
         
-        Debug.Log("wd"+hasWood + "wl" + hasWool + "s" + hasString);
-        
         // If all the costs are met proceed with crafting
         if (hasString >= item.stringCost && hasWool >= item.woolCost && hasWood >= item.woodCost &&
             hasDyes >= item.dyeCost)

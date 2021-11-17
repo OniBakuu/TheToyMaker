@@ -7,6 +7,6 @@ public class InvSlot : MonoBehaviour
 {
     public GameObject invPanel;
     public Text invText;
-    public RawImage invImage;
+    public Image invImage;
     
 }

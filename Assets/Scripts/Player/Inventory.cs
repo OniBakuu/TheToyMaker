@@ -101,7 +101,7 @@ public class Inventory : MonoBehaviour
             if (invItems[i])
             {
                 invUISlots[i].invText.text = invItems[i].itemName;
-                invUISlots[i].invImage = invItems[i].itemSprite;
+                invUISlots[i].invImage.overrideSprite = invItems[i].GetComponent<SpriteRenderer>().sprite;
                 invUISlots[i].invPanel.SetActive(true);
                 count++;
             }

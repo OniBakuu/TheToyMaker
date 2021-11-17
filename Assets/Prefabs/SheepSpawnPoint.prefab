@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sheep: {fileID: 327203806802185651, guid: 39344788d6e07d24baadce1e7a1a3758, type: 3}
+  dumboSheep: {fileID: 3333265346935031363, guid: d35e625b9c2332a45825e6672595d683, type: 3}
+  deer: {fileID: 4097544409502951596, guid: c796df5cfc6725a4e96889b0ddd49df4, type: 3}
   xMin: -4
   xMax: 4
   yMin: -4

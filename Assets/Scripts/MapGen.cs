@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Random = UnityEngine.Random;
@@ -31,6 +32,7 @@ public class MapGen : MonoBehaviour
         PlaceRocks();
         PlaceSpawns();
         PlaceGrass();
+        PlaceFlowers();
     }
 
     // Places snow tiles
@@ -107,11 +109,30 @@ public class MapGen : MonoBehaviour
                     {
                         if (Random.Range(0, 100) <= 50)
                         {
-                            Ground.SetTile(new Vector3Int(j,i,0), other[Random.Range(1,other.Length)]);
+                            Ground.SetTile(new Vector3Int(j,i,0), other[Random.Range(1,3)]);
                         }
                         
                     }
                 }
+                    
+            }
+        }
+    }
+
+    private void PlaceFlowers()
+    {
+        for (int i = -mapHeight; i < mapHeight; i++)
+        {
+            for (int j = -mapWidth; j < mapWidth; j++)
+            { if (Vector3.Distance(new Vector3Int(j,i,0), new Vector3(-5.23f, 2.44f, 0)) < 15)
+                    {
+                        if (Random.Range(0, 100) <= 3)
+                        {
+                            Ground.SetTile(new Vector3Int(j,i,0), other[Random.Range(4,other.Length)]);
+                        }
+                        
+                    }
+                
                     
             }
         }

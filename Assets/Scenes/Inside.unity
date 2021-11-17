@@ -3946,7 +3946,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3319477445358349898, guid: 8bcfabc8c11930847b145a22041fd2b3, type: 3}
       propertyPath: m_Text
-      value: 2 dye stuffs
+      value: 2 Pinecones
+      objectReference: {fileID: 0}
+    - target: {fileID: 3319477445358349898, guid: 8bcfabc8c11930847b145a22041fd2b3, type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3319477445565902139, guid: 8bcfabc8c11930847b145a22041fd2b3, type: 3}
       propertyPath: m_Text
@@ -4772,7 +4776,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1366131252
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7020,13 +7024,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '2 Wood
+  m_Text: '2 Wool
 
 '
 --- !u!222 &1850994765
@@ -8397,6 +8401,14 @@ PrefabInstance:
     - target: {fileID: 4098079803322048669, guid: 533624bbdfc52cb4bb763e0912547891, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4098079803322048669, guid: 533624bbdfc52cb4bb763e0912547891, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4098079803322048669, guid: 533624bbdfc52cb4bb763e0912547891, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 4098079803322048669, guid: 533624bbdfc52cb4bb763e0912547891, type: 3}
       propertyPath: m_LocalPosition.x

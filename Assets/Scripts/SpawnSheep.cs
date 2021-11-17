@@ -10,6 +10,8 @@ public class SpawnSheep : MonoBehaviour
     private int maxSheepNum = 7;
 
     public GameObject sheep;
+    public GameObject dumboSheep;
+    public GameObject deer;
     public float xMin;
     public float xMax;
     public float yMin;
@@ -24,6 +26,7 @@ public class SpawnSheep : MonoBehaviour
     {
         spawnCoord = spawnPoint.transform.position;
         GenerateSheep();
+        GenerateDeer();
     }
 
     public void GenerateSheep()
@@ -33,7 +36,29 @@ public class SpawnSheep : MonoBehaviour
             int rand = Random.Range(0, 100);
             if (rand <= 30)
             {
-                Instantiate(sheep, GetRandomPos(), sheep.transform.rotation);
+                rand = Random.Range(0, 100);
+                if (rand <= 10)
+                {
+                    Instantiate(dumboSheep, GetRandomPos(), quaternion.identity);
+                }
+                else
+                {
+                    Instantiate(sheep, GetRandomPos(), quaternion.identity);
+                }
+                
+            }
+            
+        }
+    }
+
+    public void GenerateDeer()
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            int rand = Random.Range(0, 100);
+            if (rand <= 5)
+            {
+                Instantiate(deer, GetRandomPos(), quaternion.identity);
             }
         }
     }

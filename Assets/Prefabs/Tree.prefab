@@ -101,7 +101,11 @@ MonoBehaviour:
   hits: 0
   hitsRequired: 3
   closeEnough: 0
+  gathered: 0
   gatherItem: {fileID: 407690485880092776, guid: 9437274dc4c375e45a42a109ee522a0b, type: 3}
+  sheepSelf: {fileID: 8416740352422137550}
+  shearedSheep: {fileID: 21300000, guid: 9449177a8c31de14d914d219cd59503f, type: 3}
+  shearedDSheep: {fileID: 21300000, guid: 9c6464d908ebd214baf8450d63d30a40, type: 3}
   itemType: Tree
 --- !u!61 &8416740352422137547
 BoxCollider2D:
@@ -116,18 +120,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.30533487}
+  m_Offset: {x: -0.006766975, y: -0.009840012}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.32}
+    oldSize: {x: 1, y: 2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.38933024}
+  m_Size: {x: 0.7608975, y: 1.0705473}
   m_EdgeRadius: 0
 --- !u!50 &8416740352422137548
 Rigidbody2D:

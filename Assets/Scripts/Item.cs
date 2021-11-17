@@ -12,6 +12,5 @@ public class Item : MonoBehaviour
    
    public string itemName;
    public int score;
-   public RawImage itemSprite;
 
 }
