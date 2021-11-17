@@ -37,7 +37,9 @@ public class Workbench : MonoBehaviour
     {
         switch (itemType)
         {
+            // Toy crafting
             case "Figure":
+                if (!HasRequiredMats(toys[0])) { break;}
                 for (int i = 0; i < toys[0].woodCost; i++) 
                 {
                    player.GetComponent<Inventory>().RemoveItems(workableItems[0]);
@@ -47,6 +49,7 @@ public class Workbench : MonoBehaviour
                 break;
             
             case "BallNCup":
+                if (!HasRequiredMats(toys[1])) { break;}
                 for (int i = 0; i < toys[1].woodCost; i++) 
                 {
                     player.GetComponent<Inventory>().RemoveItems(workableItems[0]);
@@ -61,6 +64,7 @@ public class Workbench : MonoBehaviour
                 break;
             
             case "Horse":
+                if (!HasRequiredMats(toys[2])) { break;}
                 for (int i = 0; i < toys[2].woodCost; i++)
                 {
                     player.GetComponent<Inventory>().RemoveItems(workableItems[0]);
@@ -79,7 +83,9 @@ public class Workbench : MonoBehaviour
                 toyBin.GetComponent<StorageManager>().AddItems(toys[2]);
                 break;
             
+            // Material crafting
             case "String":
+                if (!HasRequiredMats(workableItems[2])) { break;}
                 for (int i = 0; i < workableItems[2].woolCost; i++)
                 {
                     player.GetComponent<Inventory>().RemoveItems(workableItems[1]);
@@ -87,6 +93,11 @@ public class Workbench : MonoBehaviour
                 player.GetComponent<Inventory>().AddItems(workableItems[2]);
                 break;
             
+            case "Dyes":
+                // Dye crafting code HERE
+                break;
+            
+            // Equipment crafting
             case "Mittens":
                 for (int i = 0; i < 4; i++)
                 {
@@ -102,7 +113,8 @@ public class Workbench : MonoBehaviour
                     player.GetComponent<Inventory>().RemoveItems(workableItems[1]);
                 }
 
-                player.GetComponent<Inventory>().hat = true;                break;
+                player.GetComponent<Inventory>().hat = true;                
+                break;
             
             case "Coat":
                 for (int i = 0; i < 10; i++)
@@ -110,8 +122,81 @@ public class Workbench : MonoBehaviour
                     player.GetComponent<Inventory>().RemoveItems(workableItems[1]);
                 }
 
-                player.GetComponent<Inventory>().coat = true;                break;
+                player.GetComponent<Inventory>().coat = true;                
+                break;
         }
+    }
+
+    // Check inv to see if you actually have the required materials
+    public bool HasRequiredMats(Item item)
+    {
+        int hasString = 0;
+        int hasWool = 0;
+        int hasWood = 0;
+        int hasDyes = 0;
+
+        for (int i = 0; i < player.GetComponent<Inventory>().invItems.Count; i++)
+        {
+            if (player.GetComponent<Inventory>().invItems[i] != null)
+            {
+                if (player.GetComponent<Inventory>().invItems[i].itemName.Equals("String"))
+                {
+                    hasString++;
+                }
+            }
+            
+        }
+        
+        for (int i = 0; i < player.GetComponent<Inventory>().invItems.Count; i++)
+        {
+            if (player.GetComponent<Inventory>().invItems[i] != null)
+            {
+                if (player.GetComponent<Inventory>().invItems[i].itemName.Equals("Wool"))
+                {
+                    hasWool++;
+                }
+            }
+           
+        }
+        
+        for (int i = 0; i < player.GetComponent<Inventory>().invItems.Count; i++)
+        {
+            if (player.GetComponent<Inventory>().invItems[i] != null)
+            {
+                if (player.GetComponent<Inventory>().invItems[i].itemName.Equals("Wood"))
+                {
+                    hasWood++;
+                }
+            }
+            
+        }
+        
+        for (int i = 0; i < player.GetComponent<Inventory>().invItems.Count; i++)
+        {
+            if (player.GetComponent<Inventory>().invItems[i] != null)
+            {
+                if (player.GetComponent<Inventory>().invItems[i].itemName.Equals("Dyes"))
+                {
+                    hasDyes++;
+                }
+            }
+           
+        }
+        
+        Debug.Log("wd"+hasWood + "wl" + hasWool + "s" + hasString);
+        
+        // If all the costs are met proceed with crafting
+        if (hasString >= item.stringCost && hasWool >= item.woolCost && hasWood >= item.woodCost &&
+            hasDyes >= item.dyeCost)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        
+        
     }
     
     public void ShowWork()

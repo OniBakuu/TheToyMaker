@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Newtonsoft.Json.Serialization;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class Inventory : MonoBehaviour
 
     public List<InvSlot> invUISlots;
     public GameObject invUI;
+    public Text invCounter;
     private bool showingInv = false;
 
     [NonSerialized]
@@ -81,9 +83,19 @@ public class Inventory : MonoBehaviour
         
     }
 
+    public void ClearInventory()
+    {
+        for (int i = 0; i < inventorySlots; i++)
+        {
+            invItems[i] = null;
+        }
+    }
+
     // Goes through invSlots and either turns off that slot or gives it the right info
     private void SetInvSlots()
     {
+        int count = 0;
+        
         for (int i = 0; i < inventorySlots; i++)
         {
             if (invItems[i])
@@ -91,11 +103,14 @@ public class Inventory : MonoBehaviour
                 invUISlots[i].invText.text = invItems[i].itemName;
                 invUISlots[i].invImage = invItems[i].itemSprite;
                 invUISlots[i].invPanel.SetActive(true);
+                count++;
             }
             else
             {
                 invUISlots[i].invPanel.SetActive(false);
             }
         }
+
+        invCounter.text = count + "/20";
     }
 }

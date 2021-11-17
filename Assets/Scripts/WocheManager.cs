@@ -24,6 +24,7 @@ public class WocheManager : MonoBehaviour
     public Text cupScoreText;
     public Text horsieScoreText;
     public Text totalScoreText;
+    public Text daysPassed;
     public GameObject goodJobText;
 
 
@@ -35,6 +36,22 @@ public class WocheManager : MonoBehaviour
     {
         days += 1;
         player.beenOutside = false;
+        daysPassed.text = "Day " + days;
+
+        StartCoroutine(ShowDaysPassed());
+
+        /* This chunk of code makes unity totally freeze up even though it seems like it would be fine. Strange.
+         // Make a variable for color since you can't access it I guess
+         Color temp = daysPassed.GetComponent<Text>().color;
+         temp.a = 255f;
+         daysPassed.GetComponent<Text>().color = temp;
+         
+         // Make day text less visible over time
+         while (temp.a != 0)
+         {
+             temp.a -= Time.deltaTime;
+             daysPassed.GetComponent<Text>().color = temp;
+         }*/
     }
     
     void Update()
@@ -100,6 +117,14 @@ public class WocheManager : MonoBehaviour
     {
         ScoreUI.SetActive(false);
         goodJobText.SetActive(false);
+    }
+
+    private IEnumerator ShowDaysPassed()
+    {
+        daysPassed.gameObject.SetActive(true);
+        yield return new WaitForSeconds(5);
+        daysPassed.gameObject.SetActive(false);
+
     }
 
 }

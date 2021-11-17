@@ -11,11 +11,15 @@ public class TempGauge : MonoBehaviour
     public Text tempGauge;
 
     public GameObject player;
+    public GameObject wocheManager;
+    public GameObject door;
 
 
     public void Start()
     {
         player = GameObject.Find("Player");
+        wocheManager = GameObject.Find("WocheManager");
+        door = GameObject.Find("Door");
         
         PlayerClothesCheck();
         gauge = baseGauge;
@@ -32,8 +36,10 @@ public class TempGauge : MonoBehaviour
         }
         else
         {
-            // Put passout/gameover script here
-            Debug.Log("ded");
+            player.GetComponent<Inventory>().ClearInventory();
+            door.GetComponent<Door>().ChangeScene();
+            //start coroutine for display YOU FROZE 
+            wocheManager.GetComponent<WocheManager>().EndDay();
         }
     }
 

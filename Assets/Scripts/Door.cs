@@ -55,7 +55,7 @@ public class Door : MonoBehaviour
     }
 
 
-    private void ChangeScene()
+    public void ChangeScene()
     {
         if (curScene.name == "Inside")
         {
