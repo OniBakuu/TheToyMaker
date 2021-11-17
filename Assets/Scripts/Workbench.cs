@@ -10,11 +10,14 @@ public class Workbench : MonoBehaviour
     public bool atWork = false;
     public GameObject player;
     public GameObject toyBin;
+
+    public InvSlot[] storageUISlot;
     
     public GameObject workUI;
     public GameObject matsPanel;
     public GameObject toysPanel;
     public GameObject equipPanel;
+    public GameObject storagePanel;
     //public Text success;
     //public Text fail;
 
@@ -123,16 +126,31 @@ public class Workbench : MonoBehaviour
                     break;
                 }
 
-                for (int i = 0; i < workableItems[5].pineconeCost; i++)
+                for (int i = 0; i < workableItems[3].pineconeCost; i++)
                 {
-                    player.GetComponent<Inventory>().AddItems(workableItems[4]);
+                    player.GetComponent<Inventory>().RemoveItems(workableItems[4]);
                 }
                 
-                player.GetComponent<Inventory>().AddItems(workableItems[5]);
+                player.GetComponent<Inventory>().AddItems(workableItems[3]);
                 break;
             
             // Equipment crafting
             case "Mittens":
+                int mittenWool = 0;
+                for (int i = 0; i < player.GetComponent<Inventory>().invItems.Count; i++)
+                {
+                    if (player.GetComponent<Inventory>().invItems[i] != null)
+                    {
+                        if (player.GetComponent<Inventory>().invItems[i].itemName.Equals("Wool"))
+                        {
+                            mittenWool++;
+                        }
+                    }
+            
+                }
+
+                if (mittenWool < 4) {break;}
+                
                 for (int i = 0; i < 4; i++)
                 {
                     player.GetComponent<Inventory>().RemoveItems(workableItems[1]);
@@ -143,6 +161,21 @@ public class Workbench : MonoBehaviour
                 break;
             
             case "Hat":
+                int hatWool = 0;
+                for (int i = 0; i < player.GetComponent<Inventory>().invItems.Count; i++)
+                {
+                    if (player.GetComponent<Inventory>().invItems[i] != null)
+                    {
+                        if (player.GetComponent<Inventory>().invItems[i].itemName.Equals("Wool"))
+                        {
+                            hatWool++;
+                        }
+                    }
+            
+                }
+
+                if (hatWool < 6) {break;}
+                
                 for (int i = 0; i < 6; i++)
                 {
                     player.GetComponent<Inventory>().RemoveItems(workableItems[1]);
@@ -153,6 +186,21 @@ public class Workbench : MonoBehaviour
                 break;
             
             case "Coat":
+                int coatWool = 0;
+                for (int i = 0; i < player.GetComponent<Inventory>().invItems.Count; i++)
+                {
+                    if (player.GetComponent<Inventory>().invItems[i] != null)
+                    {
+                        if (player.GetComponent<Inventory>().invItems[i].itemName.Equals("Wool"))
+                        {
+                            coatWool++;
+                        }
+                    }
+            
+                }
+
+                if (coatWool < 10) {break;}
+                
                 for (int i = 0; i < 10; i++)
                 {
                     player.GetComponent<Inventory>().RemoveItems(workableItems[1]);
@@ -266,6 +314,7 @@ public class Workbench : MonoBehaviour
         equipPanel.SetActive(false);
         matsPanel.SetActive(true);
         toysPanel.SetActive(false);
+        storagePanel.SetActive(false);
     }
     
     public void ShowToysPanel()
@@ -273,6 +322,8 @@ public class Workbench : MonoBehaviour
         equipPanel.SetActive(false);
         matsPanel.SetActive(false);
         toysPanel.SetActive(true);
+        storagePanel.SetActive(false);
+
     }
 
     public void ShowEquipmentPanel()
@@ -280,6 +331,18 @@ public class Workbench : MonoBehaviour
         matsPanel.SetActive(false);
         toysPanel.SetActive(false);
         equipPanel.SetActive(true);
+        storagePanel.SetActive(false);
+
+    }
+
+    public void ShowStoragePanel()
+    {
+        matsPanel.SetActive(false);
+        toysPanel.SetActive(false);
+        equipPanel.SetActive(true);
+        SetStorageSlots();
+        storagePanel.SetActive(true);
+
     }
     
     public void OnTriggerEnter2D(Collider2D other)
@@ -309,5 +372,24 @@ public class Workbench : MonoBehaviour
         //success.gameObject.SetActive(true);
         yield return new WaitForSeconds(.5f);
         //success.gameObject.SetActive(false);
+    }
+    
+    private void SetStorageSlots()
+    {
+
+        for (int i = 0; i < toyBin.GetComponent<StorageManager>().toys.Count; i++)
+        {
+            if (toyBin.GetComponent<StorageManager>().toys[i])
+            {
+                Debug.Log(i);
+                storageUISlot[i].invText.text = toyBin.GetComponent<StorageManager>().toys[i].itemName;
+                storageUISlot[i].invImage.overrideSprite = toyBin.GetComponent<StorageManager>().toys[i].GetComponent<SpriteRenderer>().sprite;
+                storageUISlot[i].invPanel.SetActive(true);
+            }
+            else
+            {
+                storageUISlot[i].invPanel.SetActive(false);
+            }
+        }
     }
 }

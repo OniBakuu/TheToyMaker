@@ -12,7 +12,7 @@ public class Gatherable : MonoBehaviour
     public bool closeEnough = false;
     public bool gathered = false;
 
-    public Item[] gatherItem;
+    public Item gatherItem;
     private GameObject player;
     public SpriteRenderer sheepSelf;
     public Sprite shearedSheep;
@@ -69,7 +69,7 @@ public class Gatherable : MonoBehaviour
     private void Gathered()
     {
         
-        player.GetComponent<Inventory>().AddItems(gatherItem[0]);
+        player.GetComponent<Inventory>().AddItems(gatherItem);
 
         if (itemType.Equals("Sheep"))
         {

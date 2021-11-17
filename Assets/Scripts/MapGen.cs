@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Random = UnityEngine.Random;
@@ -48,6 +47,7 @@ public class MapGen : MonoBehaviour
                 Ground.SetTile(new Vector3Int(j, i, 0), tiles[Random.Range(0,tiles.Length)]);
             }
         }
+        
     }
 
     // Places rock tiles around 

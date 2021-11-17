@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class WocheManager : MonoBehaviour
@@ -58,17 +59,21 @@ public class WocheManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            bed = GameObject.Find("Bed");
-            if (bed.GetComponent<AtBed>().atBed)
+            if (SceneManager.GetActiveScene().Equals(SceneManager.GetSceneByName("Inside")))
             {
-                if (days > week)
+                bed = GameObject.Find("Bed");
+                if (bed.GetComponent<AtBed>().atBed)
                 {
-                    EndWeek();    
+                    if (days > week)
+                    {
+                        EndWeek();    
+                    }
+                    else
+                    {
+                        EndDay();
+                    }
                 }
-                else
-                {
-                    EndDay();
-                }
+            
             }
         }
     }
