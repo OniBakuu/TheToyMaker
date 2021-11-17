@@ -17,6 +17,8 @@ public class MapGen : MonoBehaviour
     public List<Vector3> sheepSpawnPoints;
     public int treeSpawns;
     public GameObject treeSpawner;
+    public List<Vector3> treeSpawnPoints;
+    public GameObject pinecone;
     
     public Tilemap Ground;
 
@@ -33,6 +35,7 @@ public class MapGen : MonoBehaviour
         PlaceSpawns();
         PlaceGrass();
         PlaceFlowers();
+        PlacePinecones();
     }
 
     // Places snow tiles
@@ -74,7 +77,7 @@ public class MapGen : MonoBehaviour
             
             x = Random.Range(-mapWidth + 25, mapWidth - 25);
             y = Random.Range(-mapHeight + 25, mapHeight - 25);
-            // Dont want to spawn trees on the cabin so we pad it out
+            // Dont want to spawn sheep on the cabin so we pad it out
             if (Vector3.Distance(new Vector3(x, y, 0), new Vector3(0, 0, 0)) > 8)
             {
                 Instantiate(sheepSpawner,new Vector3(x, y, 0), Quaternion.identity);
@@ -92,6 +95,7 @@ public class MapGen : MonoBehaviour
             if (Vector3.Distance(new Vector3(x, y, 0), new Vector3(0, 0, 0)) > 17)
             {
                 Instantiate(treeSpawner,new Vector3(x, y, 0), Quaternion.identity);
+                treeSpawnPoints.Add(new Vector3(x,y,0));
             }
         }
     }
@@ -133,6 +137,34 @@ public class MapGen : MonoBehaviour
                         
                     }
                 
+                    
+            }
+        }
+    }
+
+    private void PlacePinecones()
+    {
+        int maxPineCones = treeSpawnPoints.Count * 3;
+        int numCones = 0;
+        for (int i = -mapHeight; i < mapHeight; i++)
+        {
+            for (int j = -mapWidth; j < mapWidth; j++)
+            {
+                for (int k = 0; k < treeSpawnPoints.Count; k++)
+                {
+                    if (Vector3.Distance(new Vector3Int(j,i,0), treeSpawnPoints[k]) < 7)
+                    {
+                        if (numCones <= maxPineCones)
+                        {
+                            if (Random.Range(0, 100) <= 1)
+                            {
+                                Instantiate(pinecone, new Vector3(j, i, 0), Quaternion.identity);
+                                numCones++;
+                            }
+                        }
+                        
+                    }
+                }
                     
             }
         }

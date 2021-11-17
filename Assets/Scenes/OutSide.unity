@@ -10888,6 +10888,8 @@ MonoBehaviour:
   sheepSpawnPoints: []
   treeSpawns: 5
   treeSpawner: {fileID: 8025134074523940807, guid: 307028febf2292146ae253b8fdd08957, type: 3}
+  treeSpawnPoints: []
+  pinecone: {fileID: 6004949046847583731, guid: 27c81c570ba2ada4997b972d08d32c50, type: 3}
   Ground: {fileID: 356970294}
   tiles:
   - {fileID: 11400000, guid: dbb2e5ae2afbb274485c89142f9aa1ef, type: 2}

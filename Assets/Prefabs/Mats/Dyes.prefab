@@ -99,5 +99,6 @@ MonoBehaviour:
   woolCost: 0
   stringCost: 0
   dyeCost: 0
+  pineconeCost: 2
   itemName: Dye
   score: 0

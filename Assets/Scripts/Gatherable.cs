@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Gatherable : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class Gatherable : MonoBehaviour
     public bool closeEnough = false;
     public bool gathered = false;
 
-    public Item gatherItem;
+    public Item[] gatherItem;
     private GameObject player;
     public SpriteRenderer sheepSelf;
     public Sprite shearedSheep;
@@ -68,7 +69,7 @@ public class Gatherable : MonoBehaviour
     private void Gathered()
     {
         
-        player.GetComponent<Inventory>().AddItems(gatherItem);
+        player.GetComponent<Inventory>().AddItems(gatherItem[0]);
 
         if (itemType.Equals("Sheep"))
         {
@@ -79,11 +80,12 @@ public class Gatherable : MonoBehaviour
         {
             sheepSelf.sprite = shearedDSheep;
         }
-
+        
         if (!itemType.Equals("Sheep") && !itemType.Equals("DumboSheep"))
         {
             Destroy(gameObject);
         }
+        
 
         gathered = true;
 

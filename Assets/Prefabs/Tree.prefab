@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 33a970b1bea3e3d43a61952f276fc312, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8490566, g: 0.8490566, b: 0.8490566, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -102,7 +102,10 @@ MonoBehaviour:
   hitsRequired: 3
   closeEnough: 0
   gathered: 0
-  gatherItem: {fileID: 407690485880092776, guid: 9437274dc4c375e45a42a109ee522a0b, type: 3}
+  gatherItem:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   sheepSelf: {fileID: 8416740352422137550}
   shearedSheep: {fileID: 21300000, guid: 9449177a8c31de14d914d219cd59503f, type: 3}
   shearedDSheep: {fileID: 21300000, guid: 9c6464d908ebd214baf8450d63d30a40, type: 3}
