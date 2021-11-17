@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 public class Workbench : MonoBehaviour
@@ -14,6 +15,8 @@ public class Workbench : MonoBehaviour
     public GameObject matsPanel;
     public GameObject toysPanel;
     public GameObject equipPanel;
+    //public Text success;
+    //public Text fail;
 
     public Item[] workableItems;
     public Item[] toys;
@@ -39,17 +42,26 @@ public class Workbench : MonoBehaviour
         {
             // Toy crafting
             case "Figure":
-                if (!HasRequiredMats(toys[0])) { break;}
+                if (!HasRequiredMats(toys[0]))
+                {
+                    //StartCoroutine(ShowCraftFail()); 
+                    break;
+                }
                 for (int i = 0; i < toys[0].woodCost; i++) 
                 {
                    player.GetComponent<Inventory>().RemoveItems(workableItems[0]);
                 }
                 
+                //StartCoroutine(ShowCraftSuccess());
                 toyBin.GetComponent<StorageManager>().AddItems(toys[0]);
                 break;
             
             case "BallNCup":
-                if (!HasRequiredMats(toys[1])) { break;}
+                if (!HasRequiredMats(toys[1]))
+                {
+                    //StartCoroutine(ShowCraftFail());  
+                    break;
+                }
                 for (int i = 0; i < toys[1].woodCost; i++) 
                 {
                     player.GetComponent<Inventory>().RemoveItems(workableItems[0]);
@@ -60,11 +72,16 @@ public class Workbench : MonoBehaviour
                     player.GetComponent<Inventory>().RemoveItems(workableItems[2]);
                 }
                 
+                //StartCoroutine(ShowCraftSuccess());
                 toyBin.GetComponent<StorageManager>().AddItems(toys[1]);
                 break;
             
             case "Horse":
-                if (!HasRequiredMats(toys[2])) { break;}
+                if (!HasRequiredMats(toys[2]))
+                {
+                    //StartCoroutine(ShowCraftFail());
+                    break;
+                }
                 for (int i = 0; i < toys[2].woodCost; i++)
                 {
                     player.GetComponent<Inventory>().RemoveItems(workableItems[0]);
@@ -79,22 +96,39 @@ public class Workbench : MonoBehaviour
                 {
                     player.GetComponent<Inventory>().RemoveItems(workableItems[3]);
                 }
-
+                
+                //StartCoroutine(ShowCraftSuccess());
                 toyBin.GetComponent<StorageManager>().AddItems(toys[2]);
                 break;
             
             // Material crafting
             case "String":
-                if (!HasRequiredMats(workableItems[2])) { break;}
+                if (!HasRequiredMats(workableItems[2]))
+                {
+                    //StartCoroutine(ShowCraftFail()); 
+                    break;
+                }
                 for (int i = 0; i < workableItems[2].woolCost; i++)
                 {
                     player.GetComponent<Inventory>().RemoveItems(workableItems[1]);
                 }
+                
+                //StartCoroutine(ShowCraftSuccess());
                 player.GetComponent<Inventory>().AddItems(workableItems[2]);
                 break;
             
             case "Dyes":
-                // Dye crafting code HERE
+                if (!HasRequiredMats(workableItems[5]))
+                {
+                    break;
+                }
+
+                for (int i = 0; i < workableItems[5].pineconeCost; i++)
+                {
+                    player.GetComponent<Inventory>().AddItems(workableItems[4]);
+                }
+                
+                player.GetComponent<Inventory>().AddItems(workableItems[5]);
                 break;
             
             // Equipment crafting
@@ -103,7 +137,8 @@ public class Workbench : MonoBehaviour
                 {
                     player.GetComponent<Inventory>().RemoveItems(workableItems[1]);
                 }
-
+                
+                //StartCoroutine(ShowCraftSuccess());
                 player.GetComponent<Inventory>().mittens = true;
                 break;
             
@@ -112,7 +147,8 @@ public class Workbench : MonoBehaviour
                 {
                     player.GetComponent<Inventory>().RemoveItems(workableItems[1]);
                 }
-
+                
+                //StartCoroutine(ShowCraftSuccess());
                 player.GetComponent<Inventory>().hat = true;                
                 break;
             
@@ -122,6 +158,7 @@ public class Workbench : MonoBehaviour
                     player.GetComponent<Inventory>().RemoveItems(workableItems[1]);
                 }
 
+                //StartCoroutine(ShowCraftSuccess());
                 player.GetComponent<Inventory>().coat = true;                
                 break;
         }
@@ -134,7 +171,8 @@ public class Workbench : MonoBehaviour
         int hasWool = 0;
         int hasWood = 0;
         int hasDyes = 0;
-
+        int hasPinecone = 0;
+        
         for (int i = 0; i < player.GetComponent<Inventory>().invItems.Count; i++)
         {
             if (player.GetComponent<Inventory>().invItems[i] != null)
@@ -183,9 +221,21 @@ public class Workbench : MonoBehaviour
            
         }
         
+        for (int i = 0; i < player.GetComponent<Inventory>().invItems.Count; i++)
+        {
+            if (player.GetComponent<Inventory>().invItems[i] != null)
+            {
+                if (player.GetComponent<Inventory>().invItems[i].itemName.Equals("Pinecone"))
+                {
+                    hasPinecone++;
+                }
+            }
+            
+        }
+        
         // If all the costs are met proceed with crafting
         if (hasString >= item.stringCost && hasWool >= item.woolCost && hasWood >= item.woodCost &&
-            hasDyes >= item.dyeCost)
+            hasDyes >= item.dyeCost && hasPinecone >= item.pineconeCost)
         {
             return true;
         }
@@ -246,5 +296,18 @@ public class Workbench : MonoBehaviour
         {
             atWork = false;
         }
+    }
+
+    private IEnumerator ShowCraftFail()
+    {
+        //fail.gameObject.SetActive(true);
+        yield return new WaitForSeconds(.5f);
+        //fail.gameObject.SetActive(false);
+    }
+    private IEnumerator ShowCraftSuccess()
+    {
+        //success.gameObject.SetActive(true);
+        yield return new WaitForSeconds(.5f);
+        //success.gameObject.SetActive(false);
     }
 }

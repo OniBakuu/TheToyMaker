@@ -2978,7 +2978,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 942, y: 521}
+  m_AnchoredPosition: {x: 883, y: 521}
   m_SizeDelta: {x: 33, y: 33}
   m_Pivot: {x: 0.49999994, y: 0.50000066}
 --- !u!114 &858893273
@@ -4048,6 +4048,14 @@ PrefabInstance:
       propertyPath: m_Text
       value: Dyes
       objectReference: {fileID: 0}
+    - target: {fileID: 4494720453020839197, guid: 8bcfabc8c11930847b145a22041fd2b3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5784089944551547180, guid: 8bcfabc8c11930847b145a22041fd2b3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bcfabc8c11930847b145a22041fd2b3, type: 3}
 --- !u!1 &1187689735
@@ -4652,10 +4660,14 @@ MonoBehaviour:
   matsPanel: {fileID: 1366131251}
   toysPanel: {fileID: 2054722841}
   equipPanel: {fileID: 1608809814}
+  success: {fileID: 0}
+  fail: {fileID: 0}
   workableItems:
   - {fileID: 407690485880092776, guid: 9437274dc4c375e45a42a109ee522a0b, type: 3}
   - {fileID: 7047646702872044694, guid: b8c7cc8230e9c1b4eab18f7da863069f, type: 3}
   - {fileID: 4230090572164078140, guid: 877eb60dbdf550d4d86d119d532665cd, type: 3}
+  - {fileID: 8511725706432683692, guid: 3f4eaa93d0cd6db4db8f167afbefb83f, type: 3}
+  - {fileID: 7166999847722638796, guid: 27c81c570ba2ada4997b972d08d32c50, type: 3}
   - {fileID: 8511725706432683692, guid: 3f4eaa93d0cd6db4db8f167afbefb83f, type: 3}
   toys:
   - {fileID: 1847348408722385096, guid: 2c9de0a6857e6e94da9c370bfbc8ace0, type: 3}
@@ -4776,7 +4788,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1366131252
 RectTransform:
   m_ObjectHideFlags: 0
