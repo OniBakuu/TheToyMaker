@@ -130,7 +130,7 @@ public class MapGen : MonoBehaviour
             for (int j = -mapWidth; j < mapWidth; j++)
             { if (Vector3.Distance(new Vector3Int(j,i,0), new Vector3(-5.23f, 2.44f, 0)) < 15)
                     {
-                        if (Random.Range(0, 100) <= 3)
+                        if (Random.Range(0, 100) <= 5)
                         {
                             Ground.SetTile(new Vector3Int(j,i,0), other[Random.Range(4,other.Length)]);
                         }

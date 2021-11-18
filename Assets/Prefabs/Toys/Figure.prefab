@@ -99,6 +99,6 @@ MonoBehaviour:
   woolCost: 0
   stringCost: 0
   dyeCost: 0
+  pineconeCost: 0
   itemName: Wooden Figure
-  score: 50
-  itemSprite: {fileID: 0}
+  score: 100

@@ -121,7 +121,7 @@ public class Workbench : MonoBehaviour
                 break;
             
             case "Dyes":
-                if (!HasRequiredMats(workableItems[5]))
+                if (!HasRequiredMats(workableItems[3]))
                 {
                     break;
                 }
@@ -261,7 +261,7 @@ public class Workbench : MonoBehaviour
         {
             if (player.GetComponent<Inventory>().invItems[i] != null)
             {
-                if (player.GetComponent<Inventory>().invItems[i].itemName.Equals("Dyes"))
+                if (player.GetComponent<Inventory>().invItems[i].itemName.Equals("Dye"))
                 {
                     hasDyes++;
                 }

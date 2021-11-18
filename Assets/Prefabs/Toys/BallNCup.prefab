@@ -99,6 +99,6 @@ MonoBehaviour:
   woolCost: 0
   stringCost: 2
   dyeCost: 0
+  pineconeCost: 0
   itemName: BallNCup
-  score: 100
-  itemSprite: {fileID: 0}
+  score: 150

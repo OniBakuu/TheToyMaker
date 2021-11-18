@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Newtonsoft.Json.Serialization;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +17,12 @@ public class Inventory : MonoBehaviour
     public GameObject invUI;
     public Text invCounter;
     private bool showingInv = false;
+
+    public int heldMarkers = 0;
+    public Item wood;
+    public GameObject marker;
+    public Text markerText;
+    public GameObject player;
 
     [NonSerialized]
     public bool mittens = false;
@@ -41,6 +48,11 @@ public class Inventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             ToggleInv();
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            PlaceMarkers();
         }
     }
 
@@ -77,6 +89,7 @@ public class Inventory : MonoBehaviour
         else
         {
             SetInvSlots();
+            SetMarkersText();
             invUI.SetActive(true);
             showingInv = true;
         }
@@ -112,5 +125,33 @@ public class Inventory : MonoBehaviour
         }
 
         invCounter.text = count + "/20";
+    }
+
+    public void MakeMarkers()
+    {
+        if (invItems.Contains(wood))
+        {
+            int index = invItems.IndexOf(wood);
+            invItems[index] = null;
+            SetInvSlots();
+            heldMarkers += 4;
+            SetMarkersText();
+        }
+
+        
+    }
+
+    private void PlaceMarkers()
+    {
+        if (heldMarkers >= 1)
+        {
+            Instantiate(marker, player.transform.position, quaternion.identity);
+            heldMarkers--;
+        }
+    }
+
+    private void SetMarkersText()
+    {
+        markerText.text = "Markers:" + heldMarkers;
     }
 }

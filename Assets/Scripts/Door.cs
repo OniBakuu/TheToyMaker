@@ -32,7 +32,10 @@ public class Door : MonoBehaviour
 
             if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("OutSide"))
             {
-                ChangeScene();
+                if (atDoor)
+                {
+                    ChangeScene();
+                }
             }
             
         }
@@ -59,12 +62,12 @@ public class Door : MonoBehaviour
     {
         if (curScene.name == "Inside")
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
             player.GetComponent<Rigidbody2D>().position = new Vector2(-5, 0);
         }
         else
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
             player.GetComponent<Rigidbody2D>().position = new Vector2(0, -6);
 
         }

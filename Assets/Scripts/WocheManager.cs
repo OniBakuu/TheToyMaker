@@ -110,12 +110,21 @@ public class WocheManager : MonoBehaviour
         horsieScoreText.text = horsieScore.ToString();
         totalScoreText.text = weeklyScore.ToString();
         
+        ClearToybin();
+        
         if (weeklyScore >= 1500)
         {
             goodJobText.SetActive(true);
         }
-        
         ScoreUI.SetActive(true);
+    }
+    
+    public void ClearToybin()
+    {
+        for (int i = 0; i < toybin.Count; i++)
+        {
+            toybin[i] = null;
+        }
     }
 
     public void CloseScoreUI()

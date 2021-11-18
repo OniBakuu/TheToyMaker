@@ -13,6 +13,7 @@ public class TempGauge : MonoBehaviour
     public GameObject player;
     public GameObject wocheManager;
     public GameObject door;
+    public GameObject froze;
 
 
     public void Start()
@@ -20,6 +21,7 @@ public class TempGauge : MonoBehaviour
         player = GameObject.Find("Player");
         wocheManager = GameObject.Find("WocheManager");
         door = GameObject.Find("Door");
+        froze = GameObject.Find("FrozeText");
         
         PlayerClothesCheck();
         gauge = baseGauge;
@@ -36,13 +38,17 @@ public class TempGauge : MonoBehaviour
         }
         else
         {
-            player.GetComponent<Inventory>().ClearInventory();
-            door.GetComponent<Door>().ChangeScene();
-            //start coroutine for display YOU FROZE 
-            wocheManager.GetComponent<WocheManager>().EndDay();
+            StartCoroutine(YOUFROZE());
         }
     }
 
+    private void Death()
+    {
+        player.GetComponent<Inventory>().ClearInventory();
+        door.GetComponent<Door>().ChangeScene();
+        wocheManager.GetComponent<WocheManager>().EndDay();
+    }
+    
     private void PlayerClothesCheck()
     {
         if (player.GetComponent<Inventory>().mittens)
@@ -61,7 +67,14 @@ public class TempGauge : MonoBehaviour
         }
     }
 
-    
+    public IEnumerator YOUFROZE()
+    {
+        froze.GetComponentInChildren<Text>().text = "YOU FROZE";
+        yield return new WaitForSeconds(3);
+        froze.GetComponentInChildren<Text>().text = "";
+        yield return new WaitForSeconds(1);
+        Death();
+    }
     public void ModifyTemp(float val)
     {
         gauge += val;
